@@ -9,7 +9,9 @@
     "@types/node": "latest",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vue/component-compiler-utils": "^3.3.0",
     "piral-cli": "0.15.8",
+    "piral-cli-parcel": "^0.15.0",
     "piral-cli-webpack5": "0.15.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -17,7 +19,7 @@
     "react-router-dom": "5.3.4",
     "tslib": "2.5.0",
     "typescript": "latest",
-    "webshop-shell": "file:../webshop-shell/dist/emulator/webshop-shell-1.0.1.tgz"
+    "webshop-shell": "file:../webshop-shell/dist/emulator/webshop-shell-1.0.4.tgz"
   },
   "scripts": {
     "start": "pilet debug",
@@ -36,8 +38,8 @@
     ]
   },
   "dependencies": {
-    "vue": "^3.2.47",
-    "vue-loader": "^17.0.1",
-    "vue-template-compiler": "^2.7.14"
+    "vue": "2.6.10",
+    "vue-loader": "15.0.0",
+    "vue-template-compiler": "2.6.10"
   }
 }

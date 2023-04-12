@@ -17,7 +17,7 @@
     "react-router-dom": "5.3.4",
     "tslib": "2.5.0",
     "typescript": "latest",
-    "webshop-shell": "file:../webshop-shell/dist/emulator/webshop-shell-1.0.0.tgz"
+    "webshop-shell": "file:../webshop-shell/dist/emulator/webshop-shell-1.0.4.tgz"
   },
   "scripts": {
     "start": "pilet debug",
