@@ -62,6 +62,7 @@ export const layout: Partial<ComponentsState> = {
               aria-expanded={!collapsed}>
               <ul className="navbar-nav flex-grow">
                 {children}
+                <Link to="/cart">Cart</Link>
               </ul>
             </div>
           </div>
