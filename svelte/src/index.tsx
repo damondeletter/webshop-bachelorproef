@@ -1,18 +1,16 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import type { PiletApi } from 'webshop-shell';
+import { PiletApi } from 'webshop-shell';
+import Tile from './Tile.svelte';
 
-const Page = React.lazy(() => import('./Page'));
+import Page from './Page.svelte';
+
 
 export function setup(app: PiletApi) {
-  app.registerPage('/page', Page);
 
-  app.showNotification('Hello from Piral!', {
-    autoClose: 2000,
-  });
-  app.registerMenu(() => <Link to="/page">Page</Link>);
-  app.registerTile(() => <div>Welcome to Piral!</div>, {
+  app.registerPage('/svelte', app.fromSvelte(Page))
+
+  app.registerTile(app.fromSvelte(Tile), {
     initialColumns: 2,
     initialRows: 2,
   });
 }
+
