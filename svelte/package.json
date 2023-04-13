@@ -11,10 +11,12 @@
     "@types/react-dom": "^18",
     "piral-cli": "0.15.8",
     "piral-cli-parcel": "^0.15.0",
+    "postcss-svelte-global-styles": "^1.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router": "5.3.4",
     "react-router-dom": "5.3.4",
+    "svelte-postcss": "^1.0.7",
     "tslib": "2.5.0",
     "typescript": "latest",
     "webshop-shell": "file:../webshop-shell/dist/emulator/webshop-shell-1.0.4.tgz"

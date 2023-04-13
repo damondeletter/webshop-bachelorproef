@@ -2,7 +2,7 @@
 System.register([],function(_export){var _deps={};var require=function(n){var d=_deps[n];if(!d){var e=new Error("Cannot find module '"+n+"'");e.code='MODULE_NOT_FOUND';throw e} return d};return {
   setters:[],
   execute:function(){var module={exports:{}};var exports=module.exports;
-!(function(global,parcelRequire){'use strict';var __bundleUrl__=function(){try{throw new Error}catch(t){const e=(""+t.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);if(e)return e[0].replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^\/]+$/,"$1")+"/"}return"/"}();// modules are defined as an array
+!(function(global,parcelRequire){'use strict';var __bundleUrl__=function(){try{throw new Error}catch(t){const e=(""+t.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);if(e)return e[0].replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^\/]+$/,"$1")+"/"}return"/"}();(function(){var d=document;var u=__bundleUrl__+"index.css";var e=d.createElement("link");e.setAttribute('data-origin', "bachelorproef-webshop-svelte");e.type="text/css";e.rel="stylesheet";e.href=u+"?_="+Math.random();d.head.appendChild(e)})();// modules are defined as an array
 // [ module function, map of requires ]
 //
 // map of requires is short require name -> numeric require
@@ -2808,14 +2808,15 @@ function create_fragment(ctx) {
       t9 = (0, _internal.space)();
       button1 = (0, _internal.element)("button");
       button1.textContent = "Decrement";
-      (0, _internal.add_location)(h3, file, 10, 2, 123);
+      (0, _internal.attr_dev)(h3, "class", "svelte-9jfegi");
+      (0, _internal.add_location)(h3, file, 14, 2, 152);
       (0, _internal.set_custom_element_data)(svelte_extension, "name", "smiley");
-      (0, _internal.add_location)(svelte_extension, file, 13, 4, 196);
-      (0, _internal.add_location)(p, file, 11, 2, 150);
-      (0, _internal.add_location)(button0, file, 15, 2, 257);
-      (0, _internal.add_location)(button1, file, 16, 2, 316);
+      (0, _internal.add_location)(svelte_extension, file, 17, 4, 225);
+      (0, _internal.add_location)(p, file, 15, 2, 179);
+      (0, _internal.add_location)(button0, file, 19, 2, 286);
+      (0, _internal.add_location)(button1, file, 20, 2, 345);
       (0, _internal.attr_dev)(div, "class", "tile");
-      (0, _internal.add_location)(div, file, 9, 0, 102);
+      (0, _internal.add_location)(div, file, 13, 0, 131);
     },
     l: function claim(nodes) {
       throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2991,7 +2992,8 @@ function create_fragment(ctx) {
     c: function create() {
       h1 = (0, _internal.element)("h1");
       h1.textContent = "Svelte page!";
-      (0, _internal.add_location)(h1, file, 4, 0, 19);
+      (0, _internal.attr_dev)(h1, "class", "svelte-1tb9iu1");
+      (0, _internal.add_location)(h1, file, 7, 0, 46);
     },
     l: function claim(nodes) {
       throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

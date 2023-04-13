@@ -5,7 +5,11 @@
 
 </script>
 
-<style></style>
+<style>
+  h3 {
+    color: blue;
+  }
+</style>
 
 <div class="tile">
   <h3>Svelte: {count}</h3>
