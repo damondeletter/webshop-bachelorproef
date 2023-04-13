@@ -5,11 +5,7 @@
 
 </script>
 
-<style>
-  h3 {
-    text-align: center;
-  }
-</style>
+<style></style>
 
 <div class="tile">
   <h3>Svelte: {count}</h3>
