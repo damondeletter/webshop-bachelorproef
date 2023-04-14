@@ -105,3 +105,9 @@ a:active {
 .btn-buy:active {
   opacity: .5;
 }
+
+.aboutnomadr a {
+  text-align: center;
+  color: #6c63ff;
+  cursor:pointer;
+}

@@ -19,16 +19,7 @@ export const errors: Partial<ErrorComponentsState> = {
 };
 
 export const layout: Partial<ComponentsState> = {
-  ErrorInfo: props => (
-    <div className="notfound">
-      <h1>Oepsie..</h1>
-      <SwitchErrorInfo {...props} />
-      <p>Er is iets foutgelopen...</p>
-      <p>
-        <Link to="/" className="center-btn btn btn-default">Keer terug naar nomadr-webshop</Link>.
-      </p>
-    </div>
-  ),
+
   DashboardContainer: ({ children }) => (
     <div className="main-container -app-shell">
         {children}
@@ -39,7 +30,7 @@ export const layout: Partial<ComponentsState> = {
       <Notifications />
       <Menu type="general" />
       <div className="container">{children}</div>
-      
+      <ExtensionSlot name="footer" />
     </div>
   ),
   MenuContainer: ({ children }) => {
