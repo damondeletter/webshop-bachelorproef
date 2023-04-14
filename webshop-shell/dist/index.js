@@ -8797,7 +8797,7 @@ function installPiralDebug(options) {
             dependencies: "tslib,react,react-dom,react-router,react-router-dom",
         },
         build: {
-            date: "2023-04-14T10:38:26.324Z",
+            date: "2023-04-14T13:36:36.547Z",
             cli: "0.15.8",
             compat: "0.15",
         },
@@ -59343,7 +59343,7 @@ function invariant(condition, message) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("2ae711722d0db52d8031")
+/******/ 		__webpack_require__.h = () => ("aaa513a3b3b16e85683e")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
