@@ -5,6 +5,7 @@ import "./layout.css";
 
 const MenuItem: React.FC<MenuItemProps> = ({ children }) => <li className="nav-item">{children}</li>;
 
+
 export const errors: Partial<ErrorComponentsState> = {
   not_found: () => (
     <div className='notfound'>
@@ -62,7 +63,7 @@ export const layout: Partial<ComponentsState> = {
               aria-expanded={!collapsed}>
               <ul className="navbar-nav flex-grow">
                 {children}
-                <Link to="/cart">Cart</Link>
+              
               </ul>
             </div>
           </div>
