@@ -1,5 +1,5 @@
 <template>
-  <button class="btn-buy" @click="removeFromCart(item)">Remove</button>
+  <button class="btn-buy" @click="removeFromCart(item)">X</button>
 </template>
 
 <script>
@@ -15,4 +15,7 @@ export default {
 </script>
 
 <style>
+.btn-buy {
+  margin-left: 7px;
+}
 </style>

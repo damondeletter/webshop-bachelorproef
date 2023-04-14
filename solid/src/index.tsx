@@ -1,9 +1,10 @@
-import { lazy } from 'solid-js';
 import type { PiletApi } from 'webshop-shell';
 
-import Page from './Page';
+import ConfirmationPage from './Confirmation';
+import Footer from './Footer';
 
 export function setup(app: PiletApi) {
-  app.registerMenu(app.fromSolid(() => <a href="/sample">Sample</a>));
-  app.registerPage('/sample', app.fromSolid(Page));
+  app.registerPage('/order-confirmation', app.fromSolid(ConfirmationPage));
+  app.registerExtension('footer', app.fromSolid(Footer));
+
 }

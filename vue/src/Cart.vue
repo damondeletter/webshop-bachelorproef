@@ -61,14 +61,14 @@
        <div> <span><b>Subtotal:</b> €{{subtotal.toFixed(2)}}</span></div>
        <div class="korting" v-if="kortingsCodeGebruikt"><b>Discount (25%):</b> {{ kortingsBedrag.toFixed(2) }}</div>
         <div class="totaal"><b>Total:</b> €{{totaal.toFixed(2)}}</div>
-        <div><button @click="order">CHECKOUT NOW</button></div>
+        <div><button class="buttonCheckout" @click="order"><a href="/order">CHECKOUT NOW</a></button></div>
       </div>
       <hr/>
       <div>USE A DISCOUNT CODE:
         <input
         :value="kortingscode"
         @input="event => kortingscode = event.target.value">
-        <button @click="valideerCode">use code</button>
+        <button class="buttonCode" @click="valideerCode">use code</button>
       </div>
       <div v-if="error" class="errorCode">This discount code is not valid!</div>
     </div>
@@ -174,5 +174,4 @@ export default {
 .korting {
   color: rgb(96, 154, 10);
 }
-
 </style>

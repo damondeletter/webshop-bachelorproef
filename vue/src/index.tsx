@@ -2,6 +2,8 @@ import { PiletApi } from 'webshop-shell';
 import AddButton from './AddButton.vue';
 import RemoveButton from './RemoveButton.vue';
 import Cart from './Cart.vue';
+import {Link} from 'react-router-dom';
+import * as React from 'react';
 
 interface ButtonExtension {
   item: Object
@@ -20,6 +22,7 @@ interface CartItem {
 export function setup(app: PiletApi) {
 
   app.setData('cart', []);
+
   
 
   const addToCart = (item) => {
@@ -31,12 +34,13 @@ export function setup(app: PiletApi) {
 
     if (itemInCart) {
       itemInCart.quantity++;
+      
       return;
     } else {
       item.quantity = 1;
       cart.push(item);
     }
-    
+    app.emit('update-cart',cart);
     app.setData('cart', cart);
   }
 
@@ -48,10 +52,14 @@ export function setup(app: PiletApi) {
     if (index !== -1) {
       if (cart[index].quantity > 1) {
         cart[index].quantity--;
+     
       } else {
         cart.splice(index, 1);
       }
+      app.emit('update-cart',cart);
       app.setData("cart", cart);
+      
+      
     }
   };
 
@@ -67,6 +75,27 @@ export function setup(app: PiletApi) {
       item: {} as CartItem,
     })
   );
+
+  const MenuComponent = () => {
+    const [cartAmount, setCartAmount] = React.useState(0);
+
+    React.useEffect(() => {
+      const updateCartAmount = () => {
+        let newCartAmount = app.getData('cart').length;
+        setCartAmount(newCartAmount);
+      };
+      updateCartAmount();
+      app.on('update-cart', updateCartAmount);
+      return () => app.off('update-cart', updateCartAmount);
+    }, []);
+  
+    return (
+      <Link to="/cart">
+        Cart ({cartAmount})
+      </Link>
+    );
+  };
+  app.registerMenu(MenuComponent);
   app.registerPage("/cart", app.fromVue(Cart, { cart: app.getData('cart') }) );
 
 }
