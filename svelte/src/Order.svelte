@@ -1,5 +1,5 @@
 <script>
-  export let cart;
+
   import {navigate} from 'svelte-routing';
 
   let firstName = '';
@@ -10,8 +10,7 @@
   let phone = '';
   let zip = '';
   let country = '';
-  let currentPage = 0;
-  const itemsPerPage = 2;
+
   
   function handleSubmit() {
     if(firstName === '' || lastName === '' || email === '' || address === '' || city === '' || phone === '' || zip === '' || country === '') {
@@ -22,23 +21,9 @@
     }
   }
 
-  function handleBack() {
-    navigate('/cart');
-    window.location.reload();
-  }
 </script>
 
 <style>
-  .backbutton {
-    background-color: rgb(224, 52, 52);
-    color: #fff;
-    align-items: center;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-  }
   .containert {
     margin: 0 auto;
     display: grid;
@@ -122,41 +107,12 @@
     align-items: center;
     margin: 0 auto;
   }
-  .paginate {
-    background-color: #6c63ff;
-    color: #fff;
-    align-items: center;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  .paginate:disabled {
-    background-color: #ada9ed;
-    cursor: not-allowed;
-  }
 
-  a {
-    text-decoration: none;
-    color: #fff;
-  }
-
-  .cartitem {
-    background-color: #d6d6d6;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  .cartitem img {
-    mix-blend-mode: multiply;
-    padding: 5px;
-  }
 </style>
 
 <div class="containert">
   <div class="firstEmpty">
-    <button class="backbutton" on:click={handleBack}>Back to cart</button>
+    <svelte-extension name="back-button"></svelte-extension>
   </div>
   <div class="checkout-form">
     <h1>Checkout</h1>
@@ -222,23 +178,6 @@
     </form>
   </div>
   <div><div class="overviewItems">
-    {#if cart === undefined}
-      <p class="centered">Something went wrong, your cart is empty</p>
-    {:else}
-      <div class="cart">
-        
-          <h2>Cart</h2>
-            {#each cart.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage) as item}
-            <div class="cartitem">
-              <p>{item.name}</p>
-              €{item.price}
-              <img src={item.image} alt="productimage"/>
-            </div>
-          {/each}
-          <br/>
-          <button class="paginate" on:click={() => currentPage -= 1} disabled={currentPage === 0}>&lt;</button>
-          <button class="paginate" on:click={() => currentPage += 1} disabled={(currentPage + 1) * itemsPerPage >= cart.length}>&gt;</button>
-      </div>
-    {/if}
+    <svelte-extension name="overview-products"></svelte-extension>
   </div></div>
 </div>

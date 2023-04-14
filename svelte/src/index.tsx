@@ -7,7 +7,8 @@ import OrderPage from './Order.svelte';
 export function setup(app: PiletApi) {
 
 
-  app.registerPage('/order', app.fromSvelte(OrderPage, { cart: app.getData('cart') }))
+  console.log('APPDATA', app.getData('cart'))
+  app.registerPage('/order', app.fromSvelte(OrderPage))
 
   app.registerTile(app.fromSvelte(WordFront), {
     initialColumns: 2,

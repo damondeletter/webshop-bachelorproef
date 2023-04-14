@@ -1,5 +1,5 @@
 <template>
-  <button class="btn-buy" @click="addToCart(params)">Buy {{item}} here 1</button>
+  <button class="btn-buy" @click="addToCart(params)">Add to cart</button>
 </template>
 
 <script>

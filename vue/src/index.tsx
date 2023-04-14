@@ -4,6 +4,7 @@ import RemoveButton from './RemoveButton.vue';
 import Cart from './Cart.vue';
 import {Link} from 'react-router-dom';
 import * as React from 'react';
+import OverviewProduts from './OverviewProducts.vue';
 
 interface ButtonExtension {
   item: Object
@@ -96,6 +97,8 @@ export function setup(app: PiletApi) {
     );
   };
   app.registerMenu(MenuComponent);
+  app.registerExtension('overview-products', app.fromVue(OverviewProduts, { cart : app.getData('cart') }));
+
   app.registerPage("/cart", app.fromVue(Cart, { cart: app.getData('cart') }) );
 
 }

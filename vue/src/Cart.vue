@@ -61,7 +61,7 @@
        <div> <span><b>Subtotal:</b> €{{subtotal.toFixed(2)}}</span></div>
        <div class="korting" v-if="kortingsCodeGebruikt"><b>Discount (25%):</b> {{ kortingsBedrag.toFixed(2) }}</div>
         <div class="totaal"><b>Total:</b> €{{totaal.toFixed(2)}}</div>
-        <div><button class="buttonCheckout" @click="order"><a href="/order">CHECKOUT NOW</a></button></div>
+        <div><extension-component name="checkout-button"><button class="buttonCheckout" @click="order"></button></extension-component></div>
       </div>
       <hr/>
       <div>USE A DISCOUNT CODE:

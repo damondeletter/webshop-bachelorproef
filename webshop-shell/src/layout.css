@@ -111,3 +111,7 @@ a:active {
   color: #6c63ff;
   cursor:pointer;
 }
+
+.nav-item a {
+  color: #6c757d;
+}
