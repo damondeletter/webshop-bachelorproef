@@ -1,3 +1,4 @@
+import '@angular/compiler'
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createInstance, Piral, createStandardApi } from 'piral';
@@ -6,6 +7,7 @@ import { createVueApi } from 'piral-vue';
 import { createSvelteApi } from 'piral-svelte';
 import { createSolidApi } from 'piral-solid';
 import { createNgApi } from 'piral-ng';
+
 
 // change to your feed URL here (either using feed.piral.cloud or your own service)
 const feedUrl = 'https://feed.piral.cloud/api/v1/pilet/work-try';
