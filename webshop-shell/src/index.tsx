@@ -5,6 +5,7 @@ import { layout, errors } from './layout';
 import { createVueApi } from 'piral-vue';
 import { createSvelteApi } from 'piral-svelte';
 import { createSolidApi } from 'piral-solid';
+import { createNgApi } from 'piral-ng';
 
 // change to your feed URL here (either using feed.piral.cloud or your own service)
 const feedUrl = 'https://feed.piral.cloud/api/v1/pilet/work-try';
@@ -14,7 +15,7 @@ const instance = createInstance({
     components: layout,
     errorComponents: errors,
   },
-  plugins: [...createStandardApi(), createVueApi(), createSvelteApi(), createSolidApi()],
+  plugins: [...createStandardApi(), createVueApi(), createSvelteApi(), createSolidApi(), createNgApi()],
   requestPilets() {
     return fetch(feedUrl)
       .then((res) => res.json())

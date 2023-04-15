@@ -6,9 +6,11 @@
     "piral"
   ],
   "dependencies": {
+    "angular": "^1.8.3",
     "piral": "0.15.8",
     "piral-base": "0.15.8",
     "piral-core": "0.15.8",
+    "piral-ng": "^0.15.9",
     "piral-solid": "^0.15.9",
     "piral-svelte": "^0.15.9",
     "piral-vue": "^0.15.8",
