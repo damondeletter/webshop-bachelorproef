@@ -1,3 +1,4 @@
+import "@angular/compiler"
 import { AppModule } from './app/app.module';
 import { PageComponent } from './app/page.component';
 import { MenuComponent } from './app/menu.component';
@@ -8,6 +9,7 @@ export function setup(app: PiletApi) {
     // remove the following if you actually want to enable zone.js
     ngZone: 'noop',
   });
+
 
   app.registerMenu(app.fromNg(MenuComponent));
 
