@@ -1,10 +1,9 @@
 import { PiletApi } from 'webshop-shell';
 import AddButton from './AddButton.vue';
-import RemoveButton from './RemoveButton.vue';
 import Cart from './Cart.vue';
 import {Link} from 'react-router-dom';
 import * as React from 'react';
-import OverviewProduts from './OverviewProducts.vue';
+import OverviewProducts from './OverviewProducts.vue';
 
 interface ButtonExtension {
   item: Object
@@ -27,68 +26,75 @@ export function setup(app: PiletApi) {
   
 
   const addToCart = (item) => {
-    var cart = app.getData('cart');
-    
-    var itemInCart = cart.find((cartItem) => {
+    const cart = app.getData('cart');
+    const itemIndex = cart.findIndex((cartItem) => {
       return cartItem.name === item.name;
     });
-
-    if (itemInCart) {
-      itemInCart.quantity++;
-      
-      return;
+  
+    if (itemIndex !== -1) {
+      cart[itemIndex].quantity++;
+      app.setData('cartLength', app.getData('cartLength') + 1);
     } else {
       item.quantity = 1;
       cart.push(item);
+      app.setData('cartLength', app.getData('cartLength') + 1);
     }
-    app.emit('update-cart',cart);
+  
+    const cartLength = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+  
+    app.emit('update-cart', cart);
     app.setData('cart', cart);
-  }
-
-  const removeFromCart = (cartItem : CartItem) => {
-    const cart = app.getData("cart");
-
-    const index = cart.findIndex((item) => item.product_id === cartItem.product_id);
-
-    if (index !== -1) {
-      if (cart[index].quantity > 1) {
-        cart[index].quantity--;
-     
-      } else {
-        cart.splice(index, 1);
-      }
-      app.emit('update-cart',cart);
-      app.setData("cart", cart);
-      
-      
-    }
+    app.setData('cartLength', cartLength);
   };
+
+  addToCart({
+    product_id: 1,
+    name: 'HP Pavilion - 15.6 inch',
+    category: "Laptops",
+    price: 999,
+    description: 'Deze HP Pavilion 15-eg2025nb laptop is geschikt voor het typen van verslagen en het maken van presentaties.',
+    image: 'https://media.s-bol.com/YXGXnLvwXyDn/W8P2lJ/1200x914.jpg',
+  })
+
+  addToCart({
+    product_id: 2,
+    name: 'HP Pavilion - 15.6 inch',
+    category: "Laptops",
+    price: 999,
+    description: 'Deze HP Pavilion 15-eg2025nb laptop is geschikt voor het typen van verslagen en het maken van presentaties.',
+    image: 'https://media.s-bol.com/YXGXnLvwXyDn/W8P2lJ/1200x914.jpg',
+  })
+
+  addToCart({
+    product_id: 2,
+    name: 'HP Pavilion - 152.6 inch',
+    category: "Laptops",
+    price: 999,
+    description: 'Deze HP Pavilion 15-eg2025nb laptop is geschikt voor het typen van verslagen en het maken van presentaties.',
+    image: 'https://media.s-bol.com/YXGXnLvwXyDn/W8P2lJ/1200x914.jpg',
+  })
+
+  
+  
 
   app.registerExtension<ButtonExtension>(
     'add-button', 
     app.fromVue(AddButton, { addToCart: addToCart})
   )
 
-  app.registerExtension<ButtonExtension>(
-    "remove-button",
-    app.fromVue(RemoveButton, {
-      removeFromCart: removeFromCart,
-      item: {} as CartItem,
-    })
-  );
-
   const MenuComponent = () => {
     const [cartAmount, setCartAmount] = React.useState(0);
 
+    const updateCartAmount = () => {
+      let newCartAmount = app.getData('cart').reduce((total, item) => total + item.quantity, 0);
+      setCartAmount(newCartAmount);
+    };
+  
     React.useEffect(() => {
-      const updateCartAmount = () => {
-        let newCartAmount = app.getData('cart').length;
-        setCartAmount(newCartAmount);
-      };
       updateCartAmount();
       app.on('update-cart', updateCartAmount);
       return () => app.off('update-cart', updateCartAmount);
-    }, []);
+    }, [app.getData('cart').length]);
   
     return (
       <Link to="/cart">
@@ -96,9 +102,33 @@ export function setup(app: PiletApi) {
       </Link>
     );
   };
+  
+
   app.registerMenu(MenuComponent);
-  app.registerExtension('overview-products', app.fromVue(OverviewProduts, { cart : app.getData('cart') }));
+  app.registerExtension('overview-products', app.fromVue(OverviewProducts, { cart : app.getData('cart') }));
 
   app.registerPage("/cart", app.fromVue(Cart, { cart: app.getData('cart') }) );
 
 }
+
+
+// removeFromCart(item) {
+
+
+//   const cart = this.cart;
+
+//   const index = cart.findIndex((item2) => item2.product_id === item.product_id);
+//   console.log('log is index daar', index)
+//   if (index !== -1) {
+//     console.log("cart poef", cart[index])
+//     if (cart[index].quantity > 1) {
+      
+//       this.cart[index].quantity--;
+//     } else {
+//       this.cart.splice(index, 1);
+//     }
+//   }
+
+//   this.cartSubtotal();
+//   this.applyDiscount();
+// },

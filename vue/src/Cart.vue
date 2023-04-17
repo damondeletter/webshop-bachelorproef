@@ -9,13 +9,13 @@
           <h3>My shopping cart</h3>
         </div>
         <div class="col-md">
-          <h3>{{cart.length}} product<span v-if="cart.length > 1">s</span> </h3>
+          <h3>{{cart.reduce((acc, item) => acc + item.quantity, 0)}} product<span v-if="cart.reduce((acc, item) => acc + item.quantity, 0) > 1">s</span> </h3>
         </div>
       </div>
       <hr />
     </div>
     <div v-if="cart.length > 0">
-      <div class="rowgap" v-for="item in cart" :key="item.name" v-if="item.quantity === 1">
+      <div class="rowgap" v-for="item in cart" :key="item.name">
         <div class="row">
           <div class="col-md-4">
             <img :src="item.image" alt="image" width="300px" />
@@ -34,27 +34,7 @@
           </div>
         </div>
       </div>
-      <div v-for="(item, index) in cart" :key="item.product_id" v-if="item.quantity > 1 && index === cart.findIndex(i => i.product_id === item.product_id)">
-        <div class="rowgap">
-          <div class="row">
-            <div class="col-md-4">
-              <img :src="item.image" alt="image" width="300px" />
-            </div>
-            <div class="col-md-3">
-              <b>Name:</b> {{item.name}}
-            </div>
-            <div class="col-md-3">
-              <b>€{{item.price}}</b>
-            </div>
-            <div>
-              <b>Amount:</b> {{item.quantity}}
-            </div>
-            <div>
-              <remove-button :item="item" @removeFromCart="removeFromCart"></remove-button>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </div>
     <div v-if="cart.length != 0">
       <div class="subtotal">
@@ -102,10 +82,19 @@ export default {
   },
   methods: {
     removeFromCart(item) {
-    const index = this.cart.indexOf(item);
+
+    const cart = this.cart;
+  
+    const index = cart.findIndex((item2) => item2.product_id === item.product_id);
     if (index !== -1) {
-      this.cart.splice(index, 1);
+      if (cart[index].quantity > 1) {
+        
+        this.cart[index].quantity--;
+      } else {
+        this.cart.splice(index, 1);
+      }
     }
+
     this.cartSubtotal();
     this.applyDiscount();
   },

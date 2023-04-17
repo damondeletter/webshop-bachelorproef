@@ -5,10 +5,11 @@
 <script>
 export default {
   name: "remove-button",
-  props: ["item"],
+  props: ["remove-button","item"],
   methods: {
     removeFromCart(item) {
       this.$emit("removeFromCart", item);
+      console.log("GELUKT")
     },
   },
 };
