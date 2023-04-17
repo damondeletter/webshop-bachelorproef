@@ -1,8 +1,10 @@
-import "@angular/compiler"
-import { AppModule } from './app/app.module';
+import '@angular/compiler'
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { PiletApi } from "webshop-shell";
 import { PageComponent } from './app/page.component';
-import { MenuComponent } from './app/menu.component';
-import type { PiletApi } from 'webshop-shell';
+
+import { AppModule } from './app/app.module';
 
 export function setup(app: PiletApi) {
   app.defineNgModule(AppModule, {
@@ -10,8 +12,7 @@ export function setup(app: PiletApi) {
     ngZone: 'noop',
   });
 
+  app.registerPage("/sample", app.fromNg(PageComponent));
 
-  app.registerMenu(app.fromNg(MenuComponent));
-
-  app.registerPage('/sample', app.fromNg(PageComponent));
+  app.registerMenu(() => <Link to="/sample">Sample</Link>);
 }

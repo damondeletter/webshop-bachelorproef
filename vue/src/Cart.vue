@@ -75,7 +75,7 @@
     <div>
       <hr />
         <h4>Items that you might like...</h4>
-        
+        <extension-component name="recommended-products"></extension-component>
       </div>
   </div>
 </template>

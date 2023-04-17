@@ -5,3 +5,6 @@ dist
 dist/
 /dist
 svelte/node_modules
+vue/node_modules
+react/node_modules
+angular/node_modules

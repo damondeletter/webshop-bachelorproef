@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { SharedModule } from 'piral-ng/common';
-
 import { PageComponent } from './page.component';
-import { MenuComponent } from './menu.component';
-import '@angular/compiler'
+import { AppComponent } from './app.component';
 
 @NgModule({
-  bootstrap: [],
-  declarations: [PageComponent, MenuComponent],
-  exports: [PageComponent, MenuComponent],
-  imports: [BrowserModule, SharedModule, RouterModule.forRoot([])],
+  imports: [
+    SharedModule,
+  ],
+  declarations: [PageComponent, AppComponent],
+  exports: [PageComponent, AppComponent],
+  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
